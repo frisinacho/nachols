@@ -313,8 +313,9 @@ audio::-webkit-media-controls-time-remaining-display {
 
 	#name {
 		display: none;
-
-		
+		position: absolute;
+		top: 10%;
+		width: 90%;
 	}
 
 	.row {
