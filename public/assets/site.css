@@ -11,8 +11,9 @@
 	color-scheme: light dark;
 }
 
+/* Dark palette: follows the device unless the visitor picked a theme (data-theme on <html>). */
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme="light"]) {
 		--bg: #161615;
 		--text: #e8e8e3;
 		--muted: #9a9a93;
@@ -21,6 +22,16 @@
 		--accent-soft: #2a1e19;
 	}
 }
+:root[data-theme="dark"] {
+	--bg: #161615;
+	--text: #e8e8e3;
+	--muted: #9a9a93;
+	--line: #2c2c2a;
+	--accent: #f08a5d;
+	--accent-soft: #2a1e19;
+	color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -73,7 +84,27 @@ a:hover { text-decoration-thickness: 2px; }
 	padding-left: 1.25rem;
 }
 
-/* Language hint (shown by lang.js only when it applies) */
+/* Theme toggle (revealed by site.js, so it never shows without JavaScript) */
+.theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	margin: -0.5rem 0;
+	padding: 0;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+	color: var(--muted);
+	cursor: pointer;
+	align-self: center;
+}
+.theme-toggle:hover { color: var(--text); background: var(--accent-soft); }
+.theme-toggle[hidden] { display: none; }
+.theme-toggle svg { width: 1.125rem; height: 1.125rem; }
+
+/* Language hint (shown by site.js only when it applies) */
 .lang-hint {
 	display: flex;
 	justify-content: space-between;

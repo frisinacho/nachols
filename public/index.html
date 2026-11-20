@@ -12,7 +12,8 @@
 	<link rel="alternate" hreflang="x-default" href="https://nachols.com/">
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👌🏻</text></svg>">
 	<link rel="stylesheet" href="/assets/site.css">
-	<script defer src="/assets/lang.js"></script>
+	<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+	<script defer src="/assets/site.js"></script>
 	<script defer data-domain="nachols.com" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
@@ -23,6 +24,7 @@
 				<a href="/" aria-current="page">Home</a>
 				<a href="/resume/">Resume</a>
 				<a class="lang" href="/es/" hreflang="es" lang="es" data-set-lang="es">ES</a>
+				<button class="theme-toggle" id="theme-toggle" type="button" hidden></button>
 			</nav>
 		</header>
 		<p class="lang-hint" id="lang-hint" lang="es" hidden>
