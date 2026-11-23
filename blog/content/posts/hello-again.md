@@ -2,7 +2,7 @@
 title: "Hello again"
 date: 2026-11-23
 description: "The blog is back, this time built with Hugo."
-draft: true
+draft: false
 ---
 
 This is the umpteenth attempt I've made to keep a blog. I'm not going to promise anything, but I'll try to be honest at least.
