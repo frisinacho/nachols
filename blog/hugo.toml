@@ -1,0 +1,28 @@
+# Hugo builds ONLY the blog. Output goes to public/blog, next to the hand-written pages.
+baseURL = "https://nachols.com/blog/"
+locale = "en"
+defaultContentLanguage = "en"
+title = "Blog · Nacho LS"
+publishDir = "../public/blog"
+
+# Keep it small: no tag pages, no /posts/ index, no separate blog 404 (the site one is used).
+disableKinds = ["taxonomy", "term", "section", "404", "sitemap"]
+enableRobotsTXT = false
+
+[params]
+  description = "Notes from Nacho LS, DevOps engineer in Málaga."
+  author = "Nacho LS"
+
+# Post URLs: /blog/<file-name>/
+[permalinks]
+  posts = "/:contentbasename/"
+
+[markup.goldmark.renderer]
+  unsafe = true   # allow raw HTML inside Markdown when needed
+
+[markup.highlight]
+  codeFences = false   # plain code blocks, styled by site.css in light and dark
+
+[services.rss]
+  limit = 20
+

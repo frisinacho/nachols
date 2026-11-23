@@ -3,5 +3,3 @@
 /resume/en.html  /resume/     301
 /resume/es       /es/resume/  301
 /resume/es.html  /es/resume/  301
-/blog            /            301
-/blog/*          /            301

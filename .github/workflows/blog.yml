@@ -1,0 +1,51 @@
+# Builds the Hugo blog (blog/) into public/blog and commits the result to main.
+# The normal deploy then publishes public/ as usual.
+name: Build blog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "blog/**"
+      - ".github/workflows/blog.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-blog
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: "0.169.0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Hugo
+        run: |
+          curl -sSL -o hugo.tar.gz "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+          tar -xzf hugo.tar.gz hugo
+          sudo mv hugo /usr/local/bin/hugo
+          rm hugo.tar.gz
+          hugo version
+
+      - name: Build
+        run: hugo --source blog --minify --cleanDestinationDir
+
+      - name: Commit built blog
+        run: |
+          git add public/blog
+          if git diff --cached --quiet; then
+            echo "Blog output unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Build blog from ${GITHUB_SHA::7}"
+          git pull --rebase origin main
+          git push origin HEAD:main
