@@ -176,6 +176,25 @@ p { margin: 0 0 1rem; }
 	color: var(--muted);
 }
 
+/* Blog: post list */
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { margin: 0 0 1.5rem; }
+.post-list time { display: block; color: var(--muted); font-size: 0.875rem; }
+.post-list a { font-weight: 600; font-size: 1.125rem; }
+.post-list p { margin: 0.25rem 0 0; color: var(--muted); }
+
+/* Blog: article body (normal headings, not the small section labels) */
+.post-meta { color: var(--muted); font-size: 0.9375rem; margin-top: -0.5rem; }
+.post h2 { font-size: 1.375rem; text-transform: none; letter-spacing: 0; color: var(--text); margin: 2rem 0 0.75rem; }
+.post h3 { font-size: 1.125rem; margin: 1.75rem 0 0.5rem; }
+.post img { max-width: 100%; height: auto; border-radius: 6px; }
+.post blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--muted); }
+.post hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; background: var(--accent-soft); padding: 0.1em 0.3em; border-radius: 4px; }
+pre { overflow-x: auto; padding: 1rem; background: var(--accent-soft); border-radius: 6px; line-height: 1.5; }
+pre code { background: none; padding: 0; }
+.post-back { margin-top: 2.5rem; }
+
 /* Footer */
 .site-footer {
 	margin-top: 3rem;

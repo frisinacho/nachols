@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+	<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 160 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+	<meta name="author" content="{{ site.Params.author }}">
+	<link rel="canonical" href="{{ .Permalink }}">
+	{{ with site.Home.OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">{{ end }}
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍🏻</text></svg>">
+	<link rel="stylesheet" href="/assets/site.css">
+	<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+	<script defer src="/assets/site.js"></script>
+	<script defer data-domain="nachols.com" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<header class="site-header">
+			<a class="site-name" href="/">Nacho LS</a>
+			<nav class="site-nav" aria-label="Main">
+				<a href="/">Home</a>
+				<a href="/resume/">Resume</a>
+				<a href="/blog/" aria-current="page">Blog</a>
+				<button class="theme-toggle" id="theme-toggle" type="button" hidden></button>
+			</nav>
+		</header>
+
+		<main>
+{{ block "main" . }}{{ end }}
+		</main>
+
+		<footer class="site-footer">
+			<ul class="links">
+				<li><a href="mailto:dev@nachols.com">Email</a></li>
+				<li><a href="https://mastodon.social/@frisinacho">Mastodon</a></li>
+				<li><a href="https://www.linkedin.com/in/ignaciolasaosasaez/">LinkedIn</a></li>
+				{{ with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .Permalink }}">RSS</a></li>{{ end }}
+			</ul>
+			<p>This website practices <a href="https://ind.ie/ethical-design/">Ethical Design</a>.</p>
+		</footer>
+	</div>
+</body>
+</html>
