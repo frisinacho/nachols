@@ -1,6 +1,5 @@
 ---
 title: "Hello again"
-date: 2026-11-23
 description: "The blog is back, this time built with Hugo."
 draft: false
 ---

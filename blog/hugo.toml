@@ -13,9 +13,14 @@ enableRobotsTXT = false
   description = "Notes from Nacho LS, DevOps engineer in Málaga."
   author = "Nacho LS"
 
-# Post URLs: /blog/<file-name>/
+# One folder per post, grouped by year:
+#   content/posts/2026/2026-11-23-hello-again/index.md  ->  /blog/hello-again/
+# The date comes from the folder name and is removed from the URL.
 [permalinks]
-  posts = "/:contentbasename/"
+  posts = "/:slugorcontentbasename/"
+
+[frontmatter]
+  date = [":filename", ":default"]
 
 [markup.goldmark.renderer]
   unsafe = true   # allow raw HTML inside Markdown when needed
